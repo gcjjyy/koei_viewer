@@ -1,0 +1,197 @@
+{
+    "KAODATA.DAT": {
+        "ls11": false,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 3,
+        "tiled": false,
+        "big_endian": false
+    },
+    "STAFF1.GDT": {
+        "ls11": false,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": false
+    },
+    "STAFF2.GDT": {
+        "ls11": false,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": false
+    },
+    "STAFF3.GDT": {
+        "ls11": false,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": false
+    },
+    "STAFF4.GDT": {
+        "ls11": false,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": false
+    },
+    "STAFF5.GDT": {
+        "ls11": false,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": false
+    },
+    "KAODATAP.S4": {
+        "ls11": false,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 3,
+        "tiled": false,
+        "big_endian": false
+    },
+    "KAODATA2.S4": {
+        "ls11": false,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 3,
+        "tiled": false,
+        "big_endian": false
+    },
+    "KAO.LZW": {
+        "ls11": true,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 3,
+        "tiled": false,
+        "big_endian": true
+    },
+    "000.DAT": {
+        "ls11": false,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 3,
+        "tiled": false,
+        "big_endian": false
+    },
+    "FACEDAT.R3": {
+        "ls11": false,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 3,
+        "tiled": false,
+        "big_endian": true
+    },
+    "HEXBCHP.R3": {
+        "ls11": true,
+        "default_width": 16,
+        "default_height": 3584,
+        "align_length": 32,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": true
+    },
+    "HEXZCHP.R3": {
+        "ls11": true,
+        "default_width": 16,
+        "default_height": 1280,
+        "align_length": 32,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": true,
+        "size_variations": [
+            {
+                "width": 16,
+                "height": 1280
+            },
+            {
+                "width": 16,
+                "height": 2784
+            },
+            {
+                "width": 16,
+                "height": 2800
+            }
+        ]
+    },
+    "HEXICHR.R3": {
+        "ls11": true,
+        "default_width": 96,
+        "default_height": 96,
+        "align_length": 32,
+        "bpp": 4,
+        "tiled": true,
+        "big_endian": true
+    },
+    "HEXBCHR.R3": {
+        "ls11": true,
+        "default_width": 64,
+        "default_height": 64,
+        "align_length": 32,
+        "bpp": 4,
+        "tiled": true,
+        "big_endian": true
+    },
+    "HEXZCHR.R3": {
+        "ls11": true,
+        "default_width": 32,
+        "default_height": 64,
+        "align_length": 32,
+        "bpp": 4,
+        "tiled": true,
+        "big_endian": true
+    },
+    "SMAPBGPL.R3": {
+        "ls11": true,
+        "default_width": 16,
+        "default_height": 3392,
+        "align_length": 32,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": true,
+        "size_variations": [
+            {
+                "width": 16,
+                "height": 3392
+            },
+            {
+                "width": 16,
+                "height": 3872
+            }
+        ]
+    },
+    "MMAPBGPL.R3": {
+        "ls11": true,
+        "default_width": 16,
+        "default_height": 4080,
+        "align_length": 32,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": true
+    },
+    "SSCCHR2.R3": {
+        "ls11": true,
+        "default_width": 32,
+        "default_height": 160,
+        "align_length": 160,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": true
+    }
+}
