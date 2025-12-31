@@ -58,15 +58,6 @@
         "big_endian": false,
         "skip_header_length": 16
     },
-    "KAODATA.S4": {
-        "ls11": false,
-        "default_width": 64,
-        "default_height": 80,
-        "align_length": 1,
-        "bpp": 4,
-        "tiled": false,
-        "big_endian": false
-    },
     "KAODATAP.S4": {
         "ls11": false,
         "default_width": 64,
@@ -102,15 +93,6 @@
         "bpp": 3,
         "tiled": false,
         "big_endian": false
-    },
-    "FACEDAT.R3": {
-        "ls11": false,
-        "default_width": 64,
-        "default_height": 80,
-        "align_length": 1,
-        "bpp": 3,
-        "tiled": false,
-        "big_endian": true
     },
     "HEXBCHP.R3": {
         "ls11": true,
