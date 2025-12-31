@@ -22,6 +22,7 @@ export interface ImageConfig {
   tiled: boolean;
   big_endian: boolean;
   size_variations?: { width: number; height: number }[];
+  skip_header_length?: number;
 }
 
 export interface RenderOptions {
@@ -82,18 +83,18 @@ export class KoeiViewer {
     config: ImageConfig,
     alignLengthOverride: number
   ): void {
-    const { default_width, default_height, bpp, tiled, big_endian } = config;
+    const { default_width, default_height, bpp, tiled, big_endian, skip_header_length = 0 } = config;
     const imageDataSize = (default_width * default_height * bpp) / BITS_PER_BYTE;
-    const imageCount = Math.floor(rawBuffer.length / imageDataSize);
+    const totalBlockSize = skip_header_length + imageDataSize;
+    const imageCount = Math.floor(rawBuffer.length / totalBlockSize);
 
     let x = 0;
     let y = 0;
 
     for (let index = 0; index < imageCount; index++) {
-      const imageData = rawBuffer.slice(
-        imageDataSize * index,
-        imageDataSize * (index + 1)
-      );
+      const blockStart = totalBlockSize * index;
+      const imageStart = blockStart + skip_header_length;
+      const imageData = rawBuffer.slice(imageStart, imageStart + imageDataSize);
 
       const image = this.decoder.readImage(
         imageData,

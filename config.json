@@ -15,7 +15,8 @@
         "align_length": 1,
         "bpp": 4,
         "tiled": false,
-        "big_endian": false
+        "big_endian": false,
+        "skip_header_length": 16
     },
     "STAFF2.GDT": {
         "ls11": false,
@@ -24,7 +25,8 @@
         "align_length": 1,
         "bpp": 4,
         "tiled": false,
-        "big_endian": false
+        "big_endian": false,
+        "skip_header_length": 16
     },
     "STAFF3.GDT": {
         "ls11": false,
@@ -33,7 +35,8 @@
         "align_length": 1,
         "bpp": 4,
         "tiled": false,
-        "big_endian": false
+        "big_endian": false,
+        "skip_header_length": 16
     },
     "STAFF4.GDT": {
         "ls11": false,
@@ -42,9 +45,20 @@
         "align_length": 1,
         "bpp": 4,
         "tiled": false,
-        "big_endian": false
+        "big_endian": false,
+        "skip_header_length": 16
     },
     "STAFF5.GDT": {
+        "ls11": false,
+        "default_width": 64,
+        "default_height": 80,
+        "align_length": 1,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": false,
+        "skip_header_length": 16
+    },
+    "KAODATA.S4": {
         "ls11": false,
         "default_width": 64,
         "default_height": 80,
