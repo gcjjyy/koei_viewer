@@ -232,6 +232,10 @@ $ npx ts-node decode-faces.ts
 ![sam3](https://user-images.githubusercontent.com/39606947/144691504-99f3e17a-2df5-431d-93fb-1fb3db41ea7b.png)
 
 ## 삼국지 4
+<img width="1280" height="1360" alt="sam4-faces" src="https://github.com/user-attachments/assets/f08f17c8-46ce-4767-b504-87cae90bec16" />
+
+
+## 삼국지 4 PK
 ![sam4](https://user-images.githubusercontent.com/39606947/144691506-42bf728f-151e-46e9-97a0-312aa0860b8b.png)
 
 ## 삼국지 영걸전
