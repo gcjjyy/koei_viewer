@@ -20,7 +20,7 @@ export interface MapEntry {
   name?: string;            // Optional name for output file
 }
 
-export type MapType = 'fixed' | 'header' | 'size-based' | 'header-auto-tileset';
+export type MapType = 'fixed' | 'header' | 'size-based' | 'header-auto-tileset' | 'pmap';
 
 export interface AutoMapConfig {
   tilesetFile: string;
@@ -180,6 +180,23 @@ export class MapRenderer {
           continue;
         }
         [width, height] = dims;
+      } else if (config.type === 'pmap') {
+        // PMAP: fixed width 32, height calculated from total size
+        // Structure: map(32×h) + movement(31×(h-1)) + events
+        // Total = 32h + 31(h-1) + remaining = 63h - 31 + remaining
+        width = 32;
+        height = 20; // default
+        for (let h = 20; h <= 25; h++) {
+          const mapSize = 32 * h;
+          const movSize = 31 * (h - 1);
+          const remaining = mapData.length - mapSize - movSize;
+          if (remaining >= 0 && remaining < 100) {
+            height = h;
+            break;
+          }
+        }
+        // Only use map layer data
+        mapData = mapData.slice(0, width * height);
       } else {
         // Fixed width
         width = config.fixedWidth || 32;
@@ -273,21 +290,22 @@ export const HERO_HEXBMAP_CONFIG: AutoMapConfig = {
 };
 
 // Hero SMAP (town maps) - fixed width 32
-// Tile 255 is used for empty/padding areas
+// Uses SMAPBGPL Entry 0 (outdoor tiles)
 export const HERO_SMAP_CONFIG: AutoMapConfig = {
-  tilesetFile: 'output/hero-smapbgpl-combined.png',
+  tilesetFile: 'output/hero-smapbgpl-entry0.png',
   mapFile: 'hero/SMAP.R3',
   type: 'fixed',
   fixedWidth: 32,
   outputPrefix: 'hero-smap'
 };
 
-// Hero PMAP (palace/place maps) - fixed width 32
+// Hero PMAP (palace/place maps) - map layer only (excludes movement layer)
+// Structure: map(32×h) + movement(31×(h-1)) + events
+// Uses SMAPBGPL Entry 1 (indoor tiles)
 export const HERO_PMAP_CONFIG: AutoMapConfig = {
-  tilesetFile: 'output/hero-smapbgpl-combined.png',
+  tilesetFile: 'output/hero-smapbgpl-entry1.png',
   mapFile: 'hero/PMAP.R3',
-  type: 'fixed',
-  fixedWidth: 32,
+  type: 'pmap',
   outputPrefix: 'hero-pmap'
 };
 

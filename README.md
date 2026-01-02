@@ -345,6 +345,33 @@ HEXZCHP.R3는 3개의 LS11 엔트리로 구성:
 서주, 소패, 태산, 하구, 팽성, 하비, 신도1, 광릉, ...
 ```
 
+### PMAP (궁전/실내맵)
+
+| 항목 | 값 |
+|------|-----|
+| 파일 | hero/PMAP.R3 |
+| 타일셋 | hero/SMAPBGPL.R3 Entry 1 (실내 타일) |
+| 맵 수 | 23개 |
+| 타일 크기 | 16×16 |
+
+#### 데이터 구조
+
+```
+┌─────────────────────────────────────┐
+│ 맵 레이어 (32 × h 바이트)            │
+│ - 헤더 없음, 타일 데이터 시작         │
+│ - h = 20~21 (엔트리별 상이)          │
+├─────────────────────────────────────┤
+│ 이동 레이어 (31 × (h-1) 바이트)       │
+│ - 타일 사이 이동 가능 여부            │
+│ - 0xFF: 통과 가능                   │
+│ - 0x7F: 통과 불가                   │
+├─────────────────────────────────────┤
+│ 이벤트 데이터 (가변)                  │
+│ - 이벤트 좌표 등                     │
+└─────────────────────────────────────┘
+```
+
 ---
 
 ## 삼국지 영걸전 (월드맵 - MMAP)
@@ -565,6 +592,77 @@ HEXZCHP.R3는 3개의 LS11 엔트리로 구성:
 
 ### 8
 ![](output/hero-hexbmap-8.png)
+
+## 삼국지 영걸전 (궁전맵 - PMAP)
+
+### 0
+![](output/hero-pmap-0.png)
+
+### 1
+![](output/hero-pmap-1.png)
+
+### 2
+![](output/hero-pmap-2.png)
+
+### 3
+![](output/hero-pmap-3.png)
+
+### 4
+![](output/hero-pmap-4.png)
+
+### 5
+![](output/hero-pmap-5.png)
+
+### 6
+![](output/hero-pmap-6.png)
+
+### 7
+![](output/hero-pmap-7.png)
+
+### 8
+![](output/hero-pmap-8.png)
+
+### 9
+![](output/hero-pmap-9.png)
+
+### 10
+![](output/hero-pmap-10.png)
+
+### 11
+![](output/hero-pmap-11.png)
+
+### 12
+![](output/hero-pmap-12.png)
+
+### 13
+![](output/hero-pmap-13.png)
+
+### 14
+![](output/hero-pmap-14.png)
+
+### 15
+![](output/hero-pmap-15.png)
+
+### 16
+![](output/hero-pmap-16.png)
+
+### 17
+![](output/hero-pmap-17.png)
+
+### 18
+![](output/hero-pmap-18.png)
+
+### 19
+![](output/hero-pmap-19.png)
+
+### 20
+![](output/hero-pmap-20.png)
+
+### 21
+![](output/hero-pmap-21.png)
+
+### 22
+![](output/hero-pmap-22.png)
 
 ---
 
