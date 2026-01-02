@@ -349,76 +349,193 @@ HEXZCHP.R3는 3개의 LS11 엔트리로 구성:
 
 ## 삼국지 영걸전 (월드맵 - MMAP)
 
-| 맵 0 | 맵 1 |
-|------|------|
-| ![worldmap0](output/hero-worldmap-0.png) | ![worldmap1](output/hero-worldmap-1.png) |
+### 맵 0
+![worldmap0](output/hero-worldmap-0.png)
 
-| 맵 2 | 맵 3 |
-|------|------|
-| ![worldmap2](output/hero-worldmap-2.png) | ![worldmap3](output/hero-worldmap-3.png) |
+### 맵 1
+![worldmap1](output/hero-worldmap-1.png)
+
+### 맵 2
+![worldmap2](output/hero-worldmap-2.png)
+
+### 맵 3
+![worldmap3](output/hero-worldmap-3.png)
 
 ## 삼국지 영걸전 (필드맵 - HEXZMAP)
 
-| # | 이름 | 이미지 |
-|---|------|--------|
-| 0 | 사수관 | ![](output/hero-hexzmap-0.png) |
-| 1 | 호로관 | ![](output/hero-hexzmap-1.png) |
-| 2 | 광천 | ![](output/hero-hexzmap-2.png) |
-| 3 | 신도 | ![](output/hero-hexzmap-3.png) |
-| 4 | 거록 | ![](output/hero-hexzmap-4.png) |
-| 5 | 청하 | ![](output/hero-hexzmap-5.png) |
-| 6 | 계교 | ![](output/hero-hexzmap-6.png) |
-| 7 | 북해 | ![](output/hero-hexzmap-7.png) |
-| 8 | 서주 | ![](output/hero-hexzmap-8.png) |
-| 9 | 소패 | ![](output/hero-hexzmap-9.png) |
-| 10 | 태산 | ![](output/hero-hexzmap-10.png) |
-| 11 | 하구 | ![](output/hero-hexzmap-11.png) |
-| 12 | 팽성 | ![](output/hero-hexzmap-12.png) |
-| 13 | 하비 | ![](output/hero-hexzmap-13.png) |
-| 14 | 신도1 | ![](output/hero-hexzmap-14.png) |
-| 15 | 광릉 | ![](output/hero-hexzmap-15.png) |
-| 16 | 연주 | ![](output/hero-hexzmap-16.png) |
-| 17 | 고성 | ![](output/hero-hexzmap-17.png) |
-| 18 | 영천 | ![](output/hero-hexzmap-18.png) |
-| 19 | 여남 | ![](output/hero-hexzmap-19.png) |
-| 20 | 강하 | ![](output/hero-hexzmap-20.png) |
-| 21 | 남양 | ![](output/hero-hexzmap-21.png) |
-| 22 | 박망파 | ![](output/hero-hexzmap-22.png) |
-| 23 | 신야1 | ![](output/hero-hexzmap-23.png) |
-| 24 | 양양 | ![](output/hero-hexzmap-24.png) |
-| 25 | 장판파1 | ![](output/hero-hexzmap-25.png) |
-| 26 | 장판파2 | ![](output/hero-hexzmap-26.png) |
-| 27 | 강릉 | ![](output/hero-hexzmap-27.png) |
-| 28 | 공안 | ![](output/hero-hexzmap-28.png) |
-| 29 | 계양 | ![](output/hero-hexzmap-29.png) |
-| 30 | 무릉 | ![](output/hero-hexzmap-30.png) |
-| 31 | 영릉 | ![](output/hero-hexzmap-31.png) |
-| 32 | 장사 | ![](output/hero-hexzmap-32.png) |
-| 33 | 부 | ![](output/hero-hexzmap-33.png) |
-| 34 | 성도 | ![](output/hero-hexzmap-34.png) |
-| 35 | 와구관1 | ![](output/hero-hexzmap-35.png) |
-| 36 | 와구관2 | ![](output/hero-hexzmap-36.png) |
-| 37 | 가맹관1 | ![](output/hero-hexzmap-37.png) |
-| 38 | 가맹관2 | ![](output/hero-hexzmap-38.png) |
-| 39 | 정군산 | ![](output/hero-hexzmap-39.png) |
-| 40 | 천탕산 | ![](output/hero-hexzmap-40.png) |
-| 41 | 한수 | ![](output/hero-hexzmap-41.png) |
-| 42 | 양평관 | ![](output/hero-hexzmap-42.png) |
-| 43 | 서릉 | ![](output/hero-hexzmap-43.png) |
-| 44 | 이릉 | ![](output/hero-hexzmap-44.png) |
-| 45 | 맥 | ![](output/hero-hexzmap-45.png) |
-| 46 | 남사 | ![](output/hero-hexzmap-46.png) |
-| 47 | 신야2 | ![](output/hero-hexzmap-47.png) |
-| 48 | 완1 | ![](output/hero-hexzmap-48.png) |
-| 49 | 완2 | ![](output/hero-hexzmap-49.png) |
-| 50 | 허창1 | ![](output/hero-hexzmap-50.png) |
-| 51 | 허창2 | ![](output/hero-hexzmap-51.png) |
-| 52 | 진창 | ![](output/hero-hexzmap-52.png) |
-| 53 | 장안 | ![](output/hero-hexzmap-53.png) |
-| 54 | 낙양 | ![](output/hero-hexzmap-54.png) |
-| 55 | 업1 | ![](output/hero-hexzmap-55.png) |
-| 56 | 업2 | ![](output/hero-hexzmap-56.png) |
-| 57 | 업3 | ![](output/hero-hexzmap-57.png) |
+### 0. 사수관
+![](output/hero-hexzmap-0.png)
+
+### 1. 호로관
+![](output/hero-hexzmap-1.png)
+
+### 2. 광천
+![](output/hero-hexzmap-2.png)
+
+### 3. 신도
+![](output/hero-hexzmap-3.png)
+
+### 4. 거록
+![](output/hero-hexzmap-4.png)
+
+### 5. 청하
+![](output/hero-hexzmap-5.png)
+
+### 6. 계교
+![](output/hero-hexzmap-6.png)
+
+### 7. 북해
+![](output/hero-hexzmap-7.png)
+
+### 8. 서주
+![](output/hero-hexzmap-8.png)
+
+### 9. 소패
+![](output/hero-hexzmap-9.png)
+
+### 10. 태산
+![](output/hero-hexzmap-10.png)
+
+### 11. 하구
+![](output/hero-hexzmap-11.png)
+
+### 12. 팽성
+![](output/hero-hexzmap-12.png)
+
+### 13. 하비
+![](output/hero-hexzmap-13.png)
+
+### 14. 신도1
+![](output/hero-hexzmap-14.png)
+
+### 15. 광릉
+![](output/hero-hexzmap-15.png)
+
+### 16. 연주
+![](output/hero-hexzmap-16.png)
+
+### 17. 고성
+![](output/hero-hexzmap-17.png)
+
+### 18. 영천
+![](output/hero-hexzmap-18.png)
+
+### 19. 여남
+![](output/hero-hexzmap-19.png)
+
+### 20. 강하
+![](output/hero-hexzmap-20.png)
+
+### 21. 남양
+![](output/hero-hexzmap-21.png)
+
+### 22. 박망파
+![](output/hero-hexzmap-22.png)
+
+### 23. 신야1
+![](output/hero-hexzmap-23.png)
+
+### 24. 양양
+![](output/hero-hexzmap-24.png)
+
+### 25. 장판파1
+![](output/hero-hexzmap-25.png)
+
+### 26. 장판파2
+![](output/hero-hexzmap-26.png)
+
+### 27. 강릉
+![](output/hero-hexzmap-27.png)
+
+### 28. 공안
+![](output/hero-hexzmap-28.png)
+
+### 29. 계양
+![](output/hero-hexzmap-29.png)
+
+### 30. 무릉
+![](output/hero-hexzmap-30.png)
+
+### 31. 영릉
+![](output/hero-hexzmap-31.png)
+
+### 32. 장사
+![](output/hero-hexzmap-32.png)
+
+### 33. 부
+![](output/hero-hexzmap-33.png)
+
+### 34. 성도
+![](output/hero-hexzmap-34.png)
+
+### 35. 와구관1
+![](output/hero-hexzmap-35.png)
+
+### 36. 와구관2
+![](output/hero-hexzmap-36.png)
+
+### 37. 가맹관1
+![](output/hero-hexzmap-37.png)
+
+### 38. 가맹관2
+![](output/hero-hexzmap-38.png)
+
+### 39. 정군산
+![](output/hero-hexzmap-39.png)
+
+### 40. 천탕산
+![](output/hero-hexzmap-40.png)
+
+### 41. 한수
+![](output/hero-hexzmap-41.png)
+
+### 42. 양평관
+![](output/hero-hexzmap-42.png)
+
+### 43. 서릉
+![](output/hero-hexzmap-43.png)
+
+### 44. 이릉
+![](output/hero-hexzmap-44.png)
+
+### 45. 맥
+![](output/hero-hexzmap-45.png)
+
+### 46. 남사
+![](output/hero-hexzmap-46.png)
+
+### 47. 신야2
+![](output/hero-hexzmap-47.png)
+
+### 48. 완1
+![](output/hero-hexzmap-48.png)
+
+### 49. 완2
+![](output/hero-hexzmap-49.png)
+
+### 50. 허창1
+![](output/hero-hexzmap-50.png)
+
+### 51. 허창2
+![](output/hero-hexzmap-51.png)
+
+### 52. 진창
+![](output/hero-hexzmap-52.png)
+
+### 53. 장안
+![](output/hero-hexzmap-53.png)
+
+### 54. 낙양
+![](output/hero-hexzmap-54.png)
+
+### 55. 업1
+![](output/hero-hexzmap-55.png)
+
+### 56. 업2
+![](output/hero-hexzmap-56.png)
+
+### 57. 업3
+![](output/hero-hexzmap-57.png)
 
 ---
 
