@@ -537,6 +537,35 @@ HEXZCHP.R3는 3개의 LS11 엔트리로 구성:
 ### 57. 업3
 ![](output/hero-hexzmap-57.png)
 
+## 삼국지 영걸전 (전투맵 - HEXBMAP)
+
+### 0
+![](output/hero-hexbmap-0.png)
+
+### 1
+![](output/hero-hexbmap-1.png)
+
+### 2
+![](output/hero-hexbmap-2.png)
+
+### 3
+![](output/hero-hexbmap-3.png)
+
+### 4
+![](output/hero-hexbmap-4.png)
+
+### 5
+![](output/hero-hexbmap-5.png)
+
+### 6
+![](output/hero-hexbmap-6.png)
+
+### 7
+![](output/hero-hexbmap-7.png)
+
+### 8
+![](output/hero-hexbmap-8.png)
+
 ---
 
 # 비고

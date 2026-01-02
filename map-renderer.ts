@@ -266,8 +266,8 @@ export const HERO_HEXBMAP_CONFIG: AutoMapConfig = {
   mapFile: 'hero/HEXBMAP.R3',
   type: 'size-based',
   sizeMap: {
-    230: [23, 10],
-    528: [22, 24]
+    230: [46, 5],
+    528: [66, 8]
   },
   outputPrefix: 'hero-hexbmap'
 };
