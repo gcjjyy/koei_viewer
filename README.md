@@ -250,11 +250,17 @@ $ npx ts-node decode-faces.ts
 ![am2-staff4](output/STAFF4.GDT.png)
 ![am2-staff5](output/STAFF5.GDT.png)
 
-## 삼국지 영걸전 (기타)
+## 삼국지 영걸전 (캐릭터)
 ![hero-hexbchr](output/hero-hexbchr.png)
 ![hero-hexzchr](output/hero-hexzchr.png)
 ![hero-hexichr](output/hero-hexichr.png)
 ![hero-sscchr2](output/hero-sscchr2.png)
+
+## 삼국지 영걸전 (맵 타일)
+![hero-hexbchp](output/hero-hexbchp.png)
+![hero-hexzchp](output/hero-hexzchp.png)
+![hero-smapbgpl](output/hero-smapbgpl.png)
+![hero-mmapbgpl](output/hero-mmapbgpl.png)
 
 ---
 
