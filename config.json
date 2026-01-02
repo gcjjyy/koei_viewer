@@ -201,5 +201,16 @@
         "tiled": false,
         "big_endian": true,
         "grid_cols": 20
+    },
+    "PORTCHIP.LZW": {
+        "ls11": true,
+        "default_width": 16,
+        "default_height": 3840,
+        "align_length": 32,
+        "bpp": 4,
+        "tiled": false,
+        "big_endian": true,
+        "chip_height": 16,
+        "grid_cols": 40
     }
 }

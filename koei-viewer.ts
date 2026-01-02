@@ -64,11 +64,25 @@ export class KoeiViewer {
 
   /**
    * Count images in LS11 file
+   * When size_variations is set, calculates total chip count across all entries
    */
-  private countLs11Images(rawBuffer: Uint8Array): number {
-    let count = 0;
-    this.ls11Decoder.decode(rawBuffer, () => { count++; });
-    return count;
+  private countLs11Images(rawBuffer: Uint8Array, config: ImageConfig): number {
+    const { default_width, default_height, bpp, chip_height, size_variations } = config;
+    let totalChips = 0;
+
+    this.ls11Decoder.decode(rawBuffer, (buf: Uint8Array, size: number) => {
+      if (size_variations) {
+        // Calculate actual height from decompressed size
+        const pixelCount = (size * BITS_PER_BYTE) / bpp;
+        const actualHeight = pixelCount / default_width;
+        const chipsPerImage = chip_height ? Math.floor(actualHeight / chip_height) : 1;
+        totalChips += chipsPerImage;
+      } else {
+        const chipsPerImage = chip_height ? Math.floor(default_height / chip_height) : 1;
+        totalChips += chipsPerImage;
+      }
+    });
+    return totalChips;
   }
 
   /**
@@ -142,7 +156,7 @@ export class KoeiViewer {
     alignLengthOverride: number,
     gridCols: number
   ): void {
-    const { default_width, default_height, bpp, tiled, big_endian, chip_height, max_images } = config;
+    const { default_width, default_height, bpp, tiled, big_endian, chip_height, max_images, size_variations } = config;
     const displayHeight = chip_height || default_height;
     let index = 0;
     let imageIndex = 0;
@@ -155,29 +169,39 @@ export class KoeiViewer {
       }
       imageIndex++;
 
+      // Calculate actual height from decompressed size
+      // size = width * height * bpp / 8
+      let actualHeight = default_height;
+      if (size_variations) {
+        // Find matching size variation
+        const pixelCount = (size * BITS_PER_BYTE) / bpp;
+        actualHeight = pixelCount / default_width;
+      }
+
       const image = this.decoder.readImage(
         buf,
         default_width,
-        default_height,
+        actualHeight,
         alignLengthOverride,
         bpp,
         big_endian
       );
 
       // Split into chips if chip_height is set
-      const chipsPerImage = chip_height ? Math.floor(default_height / chip_height) : 1;
+      const actualDisplayHeight = chip_height || actualHeight;
+      const chipsPerImage = chip_height ? Math.floor(actualHeight / chip_height) : 1;
 
       for (let chipIdx = 0; chipIdx < chipsPerImage; chipIdx++) {
         const gridX = index % gridCols;
         const gridY = Math.floor(index / gridCols);
         const destX = gridX * default_width;
-        const destY = gridY * displayHeight;
-        const srcYOffset = chipIdx * displayHeight;
+        const destY = gridY * actualDisplayHeight;
+        const srcYOffset = chipIdx * actualDisplayHeight;
 
         if (tiled) {
-          this.renderTiledChip(png, image, destX, destY, default_width, displayHeight, srcYOffset);
+          this.renderTiledChip(png, image, destX, destY, default_width, actualDisplayHeight, srcYOffset);
         } else {
-          this.renderNormalChip(png, image, destX, destY, displayHeight, srcYOffset);
+          this.renderNormalChip(png, image, destX, destY, actualDisplayHeight, srcYOffset);
         }
 
         index++;
@@ -306,12 +330,11 @@ export class KoeiViewer {
     // Count images (considering chip splitting and max_images limit)
     let imageCount: number;
     if (config.ls11) {
-      let baseCount = this.countLs11Images(rawBuffer);
-      if (config.max_images && baseCount > config.max_images) {
-        baseCount = config.max_images;
+      // countLs11Images now returns total chip count when size_variations is set
+      imageCount = this.countLs11Images(rawBuffer, config);
+      if (config.max_images && imageCount > config.max_images) {
+        imageCount = config.max_images;
       }
-      const chipsPerImage = chip_height ? Math.floor(default_height / chip_height) : 1;
-      imageCount = baseCount * chipsPerImage;
     } else {
       let baseCount = this.countNonLs11Images(rawBuffer, config);
       if (config.max_images && baseCount > config.max_images) {
