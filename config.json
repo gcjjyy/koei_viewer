@@ -83,7 +83,8 @@
         "align_length": 1,
         "bpp": 3,
         "tiled": false,
-        "big_endian": true
+        "big_endian": true,
+        "max_images": 128
     },
     "000.DAT": {
         "ls11": false,
@@ -101,7 +102,9 @@
         "align_length": 32,
         "bpp": 4,
         "tiled": false,
-        "big_endian": true
+        "big_endian": true,
+        "chip_height": 16,
+        "grid_cols": 20
     },
     "HEXZCHP.R3": {
         "ls11": true,
@@ -111,6 +114,8 @@
         "bpp": 4,
         "tiled": false,
         "big_endian": true,
+        "chip_height": 16,
+        "grid_cols": 20,
         "size_variations": [
             {
                 "width": 16,
@@ -133,7 +138,8 @@
         "align_length": 32,
         "bpp": 4,
         "tiled": true,
-        "big_endian": true
+        "big_endian": true,
+        "grid_cols": 15
     },
     "HEXBCHR.R3": {
         "ls11": true,
@@ -151,7 +157,8 @@
         "align_length": 32,
         "bpp": 4,
         "tiled": true,
-        "big_endian": true
+        "big_endian": true,
+        "grid_cols": 20
     },
     "SMAPBGPL.R3": {
         "ls11": true,
@@ -161,6 +168,8 @@
         "bpp": 4,
         "tiled": false,
         "big_endian": true,
+        "chip_height": 16,
+        "grid_cols": 20,
         "size_variations": [
             {
                 "width": 16,
@@ -179,7 +188,9 @@
         "align_length": 32,
         "bpp": 4,
         "tiled": false,
-        "big_endian": true
+        "big_endian": true,
+        "chip_height": 16,
+        "grid_cols": 20
     },
     "SSCCHR2.R3": {
         "ls11": true,
@@ -188,6 +199,7 @@
         "align_length": 160,
         "bpp": 4,
         "tiled": false,
-        "big_endian": true
+        "big_endian": true,
+        "grid_cols": 20
     }
 }
