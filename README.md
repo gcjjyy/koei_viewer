@@ -102,12 +102,14 @@ npx ts-node koei-viewer.ts horizon/KAO.LZW horizon/HORIZON.PAL kao.png
 
 ### 삼국지 4 PK
 ![sam4pk](output/sam4pk-kaodatap.png)
+![sam4pk2](output/sam4pk-kaodata2.png)
 
 ### 삼국지 영걸전
 ![hero-faces](output/hero-faces.png)
 
 ### 대항해시대 2
 ![horizon](output/horizon-kao.png)
+![horizon-portchip](output/horizon-portchip.png)
 
 ### 에어매니지먼트 2
 ![am2-staff1](output/STAFF1.GDT.png)
