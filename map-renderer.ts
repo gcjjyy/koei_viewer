@@ -20,7 +20,7 @@ export interface MapEntry {
   name?: string;            // Optional name for output file
 }
 
-export type MapType = 'fixed' | 'header' | 'size-based' | 'header-auto-tileset' | 'pmap';
+export type MapType = 'fixed' | 'header' | 'size-based' | 'header-auto-tileset' | 'pmap' | 'smap';
 
 export interface AutoMapConfig {
   tilesetFile: string;
@@ -197,6 +197,63 @@ export class MapRenderer {
         }
         // Only use map layer data
         mapData = mapData.slice(0, width * height);
+      } else if (config.type === 'smap') {
+        // SMAP: fixed 32×20 map + 32×21 overlay + events
+        width = 32;
+        height = 20;
+        const overlayHeight = 21;
+        const mapSize = width * height;  // 640
+        const overlaySize = width * overlayHeight;  // 672
+
+        const baseMap = mapData.slice(0, mapSize);
+        const overlayMap = mapData.slice(mapSize, mapSize + overlaySize);
+
+        // Create PNG
+        const outW = width * this.tileSize;
+        const outH = height * this.tileSize;
+        const png = new PNG({ width: outW, height: outH, colorType: 6 });
+
+        // Fill with black
+        for (let j = 0; j < png.data.length; j += 4) {
+          png.data[j] = 0;
+          png.data[j + 1] = 0;
+          png.data[j + 2] = 0;
+          png.data[j + 3] = 255;
+        }
+
+        // Helper to render a tile
+        const renderTile = (mx: number, my: number, tileIdx: number) => {
+          if (tileIdx >= activeTileset.numTiles) return;
+          const tileX = (tileIdx % activeTileset.tilesPerRow) * this.tileSize;
+          const tileY = Math.floor(tileIdx / activeTileset.tilesPerRow) * this.tileSize;
+          for (let ty = 0; ty < this.tileSize; ty++) {
+            for (let tx = 0; tx < this.tileSize; tx++) {
+              const srcIdx = ((tileY + ty) * activeTileset.png.width + (tileX + tx)) * 4;
+              const dstX = mx * this.tileSize + tx;
+              const dstY = my * this.tileSize + ty;
+              const dstIdx = (dstY * outW + dstX) * 4;
+              png.data[dstIdx] = activeTileset.png.data[srcIdx];
+              png.data[dstIdx + 1] = activeTileset.png.data[srcIdx + 1];
+              png.data[dstIdx + 2] = activeTileset.png.data[srcIdx + 2];
+              png.data[dstIdx + 3] = 255;
+            }
+          }
+        };
+
+        // 1. Render base map (32×20)
+        for (let my = 0; my < height; my++) {
+          for (let mx = 0; mx < width; mx++) {
+            const tileIdx = baseMap[my * width + mx];
+            renderTile(mx, my, tileIdx);
+          }
+        }
+
+        // Overlay layer disabled - just render base map
+
+        const outputPath = path.join(outputDir, `${config.outputPrefix}-${i}.png`);
+        fs.writeFileSync(outputPath, PNG.sync.write(png));
+        console.log(`  [${i}] ${width}x${height} -> ${outputPath}`);
+        continue;
       } else {
         // Fixed width
         width = config.fixedWidth || 32;
@@ -289,13 +346,13 @@ export const HERO_HEXBMAP_CONFIG: AutoMapConfig = {
   outputPrefix: 'hero-hexbmap'
 };
 
-// Hero SMAP (town maps) - fixed width 32
+// Hero SMAP (town maps) - map layer + overlay layer
+// Structure: map(32×20) + overlay(32×21) + events
 // Uses SMAPBGPL Entry 0 (outdoor tiles)
 export const HERO_SMAP_CONFIG: AutoMapConfig = {
   tilesetFile: 'output/hero-smapbgpl-entry0.png',
   mapFile: 'hero/SMAP.R3',
-  type: 'fixed',
-  fixedWidth: 32,
+  type: 'smap',
   outputPrefix: 'hero-smap'
 };
 
