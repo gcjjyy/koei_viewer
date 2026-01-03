@@ -91,6 +91,8 @@ export class KoeiImageDecoder {
    * @param alignLength - Alignment length for bitplane rows
    * @param bpp - Bits per pixel (color depth)
    * @param leftToRight - Bit order (true: MSB first, false: LSB first)
+   * @param planeOrder - Optional custom bitplane order (e.g., [3,2,1,0] for reversed)
+   * @param invertMask - Optional bitmask for inverting specific planes (e.g., 0x9 inverts planes 0 and 3)
    * @returns Decoded image with indexed pixels
    */
   readImage(
@@ -99,7 +101,9 @@ export class KoeiImageDecoder {
     height: number,
     alignLength: number,
     bpp: number,
-    leftToRight: boolean
+    leftToRight: boolean,
+    planeOrder?: number[],
+    invertMask?: number
   ): KoeiImage {
     const image: KoeiImage = {
       width,
@@ -116,6 +120,10 @@ export class KoeiImageDecoder {
     const imageRawSize = (width * height * bpp) / BITS_PER_BYTE;
     const iterations = Math.floor(imageRawSize / (alignLength * bpp));
 
+    // Default plane order: [0, 1, 2, 3, ...]
+    const order = planeOrder || Array.from({ length: bpp }, (_, i) => i);
+    const invMask = invertMask || 0;
+
     for (let i = 0; i < iterations; i++) {
       // Read bitplane data for current row segment
       const pixels = reader.readBytes(alignLength * bpp);
@@ -127,12 +135,20 @@ export class KoeiImageDecoder {
         // Combine bits from all bitplanes to form pixel index
         for (let k = 0; k < bpp; k++) {
           const bitplaneOffset = alignLength * k;
-          const bit = KoeiImageDecoder.bitFromBytes(
+          let bit = KoeiImageDecoder.bitFromBytes(
             pixels.slice(bitplaneOffset),
             j
           );
 
-          if (leftToRight) {
+          // Apply inversion if specified
+          if (invMask & (1 << k)) {
+            bit = 1 - bit;
+          }
+
+          if (planeOrder) {
+            // Use custom plane order
+            image.buf[position] |= bit << (bpp - 1 - order[k]);
+          } else if (leftToRight) {
             // MSB first: higher bitplanes go to higher bits
             image.buf[position] |= bit << (bpp - k - 1);
           } else {

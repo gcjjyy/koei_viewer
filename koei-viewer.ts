@@ -25,6 +25,8 @@ export interface ImageConfig {
   grid_cols?: number;
   chip_height?: number;  // 세로로 긴 이미지를 이 높이로 분할하여 표시
   max_images?: number;   // 최대 이미지 개수 제한
+  plane_order?: number[];  // 커스텀 비트플레인 순서 (예: [3,2,1,0])
+  invert_mask?: number;    // 비트플레인 반전 마스크 (예: 0x9 = plane 0,3 반전)
 }
 
 export interface RenderOptions {
@@ -114,7 +116,7 @@ export class KoeiViewer {
     alignLengthOverride: number,
     gridCols: number
   ): void {
-    const { default_width, default_height, bpp, tiled, big_endian, skip_header_length = 0 } = config;
+    const { default_width, default_height, bpp, tiled, big_endian, skip_header_length = 0, plane_order, invert_mask } = config;
     const imageDataSize = (default_width * default_height * bpp) / BITS_PER_BYTE;
     const totalBlockSize = skip_header_length + imageDataSize;
     const imageCount = Math.floor(rawBuffer.length / totalBlockSize);
@@ -130,7 +132,9 @@ export class KoeiViewer {
         default_height,
         alignLengthOverride,
         bpp,
-        big_endian
+        big_endian,
+        plane_order,
+        invert_mask
       );
 
       const gridX = index % gridCols;
@@ -156,7 +160,7 @@ export class KoeiViewer {
     alignLengthOverride: number,
     gridCols: number
   ): void {
-    const { default_width, default_height, bpp, tiled, big_endian, chip_height, max_images, size_variations } = config;
+    const { default_width, default_height, bpp, tiled, big_endian, chip_height, max_images, size_variations, plane_order, invert_mask } = config;
     const displayHeight = chip_height || default_height;
     let index = 0;
     let imageIndex = 0;
@@ -184,7 +188,9 @@ export class KoeiViewer {
         actualHeight,
         alignLengthOverride,
         bpp,
-        big_endian
+        big_endian,
+        plane_order,
+        invert_mask
       );
 
       // Split into chips if chip_height is set

@@ -170,6 +170,8 @@
         "big_endian": true,
         "chip_height": 16,
         "grid_cols": 20,
+        "plane_order": [3, 2, 1, 0],
+        "invert_mask": 9,
         "size_variations": [
             {
                 "width": 16,
