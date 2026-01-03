@@ -111,6 +111,10 @@ npx ts-node koei-viewer.ts horizon/KAO.LZW horizon/HORIZON.PAL kao.png
 
 ### 에어매니지먼트 2
 ![am2-staff1](output/STAFF1.GDT.png)
+![am2-staff2](output/STAFF2.GDT.png)
+![am2-staff3](output/STAFF3.GDT.png)
+![am2-staff4](output/STAFF4.GDT.png)
+![am2-staff5](output/STAFF5.GDT.png)
 
 ### 삼국지 영걸전 (캐릭터)
 ![hero-hexbchr](output/hero-hexbchr.png)
