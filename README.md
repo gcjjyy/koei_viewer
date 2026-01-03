@@ -121,7 +121,8 @@ npx ts-node koei-viewer.ts horizon/KAO.LZW horizon/HORIZON.PAL kao.png
 ### 삼국지 영걸전 (맵 타일셋)
 ![hero-hexbchp](output/hero-hexbchp.png)
 ![hero-hexzchp](output/hero-hexzchp.png)
-![hero-smapbgpl](output/hero-smapbgpl.png)
+![hero-smapbgpl-entry0](output/hero-smapbgpl-entry0.png)
+![hero-smapbgpl-entry1](output/hero-smapbgpl-entry1.png)
 ![hero-mmapbgpl](output/hero-mmapbgpl.png)
 
 > 맵 스크린샷은 [맵 렌더러 문서](docs/map-renderer.md#스크린샷)에서 확인하세요.
