@@ -112,17 +112,17 @@ npx ts-node koei-viewer.ts horizon/KAO.LZW horizon/HORIZON.PAL kao.png
 ### 에어매니지먼트 2
 ![am2-staff1](output/STAFF1.GDT.png)
 
-### 삼국지 영걸전 (캐릭터/타일)
-
-| HEXBCHR | HEXZCHR | HEXICHR | SSCCHR2 |
-|---------|---------|---------|---------|
-| ![](output/hero-hexbchr.png) | ![](output/hero-hexzchr.png) | ![](output/hero-hexichr.png) | ![](output/hero-sscchr2.png) |
+### 삼국지 영걸전 (캐릭터)
+![hero-hexbchr](output/hero-hexbchr.png)
+![hero-hexzchr](output/hero-hexzchr.png)
+![hero-hexichr](output/hero-hexichr.png)
+![hero-sscchr2](output/hero-sscchr2.png)
 
 ### 삼국지 영걸전 (맵 타일셋)
-
-| HEXBCHP | HEXZCHP | SMAPBGPL | MMAPBGPL |
-|---------|---------|----------|----------|
-| ![](output/hero-hexbchp.png) | ![](output/hero-hexzchp.png) | ![](output/hero-smapbgpl.png) | ![](output/hero-mmapbgpl.png) |
+![hero-hexbchp](output/hero-hexbchp.png)
+![hero-hexzchp](output/hero-hexzchp.png)
+![hero-smapbgpl](output/hero-smapbgpl.png)
+![hero-mmapbgpl](output/hero-mmapbgpl.png)
 
 > 맵 스크린샷은 [맵 렌더러 문서](docs/map-renderer.md#스크린샷)에서 확인하세요.
 
