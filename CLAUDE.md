@@ -6,25 +6,33 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 KOEI Viewer is a TypeScript tool for decoding and viewing image data from classic KOEI games (Romance of the Three Kingdoms series, Uncharted Waters, etc.). It handles various proprietary image formats including bitplane-based images, LS11 compression, and game-specific compression algorithms.
 
+## Runtime
+
+This project uses **Bun** as its JavaScript/TypeScript runtime. Bun natively executes TypeScript without a separate build step, providing faster startup and execution compared to Node.js + ts-node.
+
+- No transpilation needed - Bun runs `.ts` files directly
+- Dependencies managed via `bun install` (creates `bun.lockb`)
+- Type checking available via `bun run typecheck` (uses tsc with `--noEmit`)
+
 ## Build & Run Commands
 
 ```sh
 # Install dependencies
-npm install
+bun install
 
-# Build TypeScript
-npx tsc
+# Type check (no build needed - Bun runs TypeScript directly)
+bun run typecheck
 
 # Run the general image viewer (for config.json registered formats)
-npx ts-node koei-viewer.ts <image-file> <palette-file> [output.png]
+bun run koei-viewer.ts <image-file> <palette-file> [output.png]
 
 # Examples
-npx ts-node koei-viewer.ts sam3/KAODATA.DAT sam3/SAM3KAO.PAL output.png
-npx ts-node koei-viewer.ts horizon/KAO.LZW horizon/HORIZON.PAL kao.png
+bun run koei-viewer.ts sam3/KAODATA.DAT sam3/SAM3KAO.PAL output.png
+bun run koei-viewer.ts horizon/KAO.LZW horizon/HORIZON.PAL kao.png
 
 # Run specialized decoders
-npx ts-node decode-sam4-faces.ts    # Sangokushi 4 faces -> sam4-faces.png
-npx ts-node decode-faces.ts          # Sangokushi Eiketsuden faces -> faces.png
+bun run decode-sam4-faces.ts    # Sangokushi 4 faces -> sam4-faces.png
+bun run decode-faces.ts          # Sangokushi Eiketsuden faces -> faces.png
 ```
 
 ## Architecture

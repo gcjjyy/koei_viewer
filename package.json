@@ -2,9 +2,12 @@
   "name": "koei_viewer",
   "version": "1.0.0",
   "description": "KOEI의 고전 게임인 삼국지 시리즈나 대항해시대 등의 게임의 이미지 데이터를 읽어 출력하는 프로그램",
-  "main": "analyze.js",
+  "main": "koei-viewer.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "viewer": "bun run koei-viewer.ts",
+    "decode-sam4": "bun run decode-sam4-faces.ts",
+    "decode-faces": "bun run decode-faces.ts",
+    "typecheck": "bun x tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -13,7 +16,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/gcjjyy/koei_viewer/issues"
   },
@@ -22,10 +24,9 @@
     "pngjs": "^7.0.0"
   },
   "devDependencies": {
-    "@types/node": "^25.0.3",
+    "@types/bun": "latest",
     "@types/pngjs": "^6.0.5",
     "iconv-lite": "^0.7.1",
-    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
 }
