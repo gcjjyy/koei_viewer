@@ -197,6 +197,18 @@ export class MapRenderer {
         }
         // Only use map layer data
         mapData = mapData.slice(0, width * height);
+
+        // Use entry-specific tileset based on PMAP category
+        // Palace: 0-5, Mansion: 6-13 & 18-22, Barracks: 14-17
+        let pmapTilesetPath: string;
+        if (i <= 5) {
+          pmapTilesetPath = 'output/hero-smapbgpl-entry1-palace.png';
+        } else if (i <= 13 || (i >= 18 && i <= 22)) {
+          pmapTilesetPath = 'output/hero-smapbgpl-entry1-mansion.png';
+        } else {
+          pmapTilesetPath = 'output/hero-smapbgpl-entry1-barracks.png';
+        }
+        activeTileset = this.loadTileset(pmapTilesetPath);
       } else if (config.type === 'smap') {
         // SMAP: fixed 32×20 map + 32×21 overlay + events
         width = 32;
@@ -260,7 +272,7 @@ export class MapRenderer {
         height = Math.ceil(mapData.length / width);
       }
 
-      const png = this.renderMap(tileset, mapData, width, height);
+      const png = this.renderMap(activeTileset, mapData, width, height);
       const outputPath = path.join(outputDir, `${config.outputPrefix}-${i}.png`);
       fs.writeFileSync(outputPath, PNG.sync.write(png));
       console.log(`  [${i}] ${width}x${height} -> ${outputPath}`);
@@ -348,7 +360,7 @@ export const HERO_HEXBMAP_CONFIG: AutoMapConfig = {
 
 // Hero SMAP (town maps) - map layer + overlay layer
 // Structure: map(32×20) + overlay(32×21) + events
-// Uses SMAPBGPL Entry 0 (outdoor tiles)
+// Uses SMAPBGPL Entry 0 (outdoor tiles) with SMAP palette
 export const HERO_SMAP_CONFIG: AutoMapConfig = {
   tilesetFile: 'output/hero-smapbgpl-entry0.png',
   mapFile: 'hero/SMAP.R3',
@@ -358,12 +370,46 @@ export const HERO_SMAP_CONFIG: AutoMapConfig = {
 
 // Hero PMAP (palace/place maps) - map layer only (excludes movement layer)
 // Structure: map(32×h) + movement(31×(h-1)) + events
-// Uses SMAPBGPL Entry 1 (indoor tiles)
+// Uses SMAPBGPL Entry 1 with different palettes based on map type
+// PMAP category mapping (based on tile usage analysis):
+// - Palace (0-5): tiles 48-67, 88-91, 120-137
+// - Mansion (6-13): tiles 68-75, 92-95, 110-115, 121-127
+// - Barracks (14-22): tiles 206-241
 export const HERO_PMAP_CONFIG: AutoMapConfig = {
-  tilesetFile: 'output/hero-smapbgpl-entry1.png',
+  tilesetFile: 'output/hero-smapbgpl-entry1-palace.png',
   mapFile: 'hero/PMAP.R3',
   type: 'pmap',
   outputPrefix: 'hero-pmap'
+};
+
+// PMAP tileset mapping by entry index
+export const PMAP_TILESET_MAP: { [key: number]: string } = {
+  // Palace maps (0-5)
+  0: 'output/hero-smapbgpl-entry1-palace.png',
+  1: 'output/hero-smapbgpl-entry1-palace.png',
+  2: 'output/hero-smapbgpl-entry1-palace.png',
+  3: 'output/hero-smapbgpl-entry1-palace.png',
+  4: 'output/hero-smapbgpl-entry1-palace.png',
+  5: 'output/hero-smapbgpl-entry1-palace.png',
+  // Mansion maps (6-13)
+  6: 'output/hero-smapbgpl-entry1-mansion.png',
+  7: 'output/hero-smapbgpl-entry1-mansion.png',
+  8: 'output/hero-smapbgpl-entry1-mansion.png',
+  9: 'output/hero-smapbgpl-entry1-mansion.png',
+  10: 'output/hero-smapbgpl-entry1-mansion.png',
+  11: 'output/hero-smapbgpl-entry1-mansion.png',
+  12: 'output/hero-smapbgpl-entry1-mansion.png',
+  13: 'output/hero-smapbgpl-entry1-mansion.png',
+  // Barracks maps (14-22)
+  14: 'output/hero-smapbgpl-entry1-barracks.png',
+  15: 'output/hero-smapbgpl-entry1-barracks.png',
+  16: 'output/hero-smapbgpl-entry1-barracks.png',
+  17: 'output/hero-smapbgpl-entry1-barracks.png',
+  18: 'output/hero-smapbgpl-entry1-barracks.png',
+  19: 'output/hero-smapbgpl-entry1-barracks.png',
+  20: 'output/hero-smapbgpl-entry1-barracks.png',
+  21: 'output/hero-smapbgpl-entry1-barracks.png',
+  22: 'output/hero-smapbgpl-entry1-barracks.png',
 };
 
 // CLI entry point
